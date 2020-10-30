@@ -1,13 +1,17 @@
-import React from 'react';
-import './App.css';
+import React, {Component} from 'react';
 import CardItem from '../../components/CardItem/CardItem';
+import './App.css';
 
-const App = () => {
-  return (
-    <div className="App">
-        <CardItem />
-    </div>
-  );
+class App extends Component {
+
+
+    render() {
+        return (
+            <div className="App">
+                <CardItem/>
+            </div>
+        )
+    }
 }
 
 export default App;
