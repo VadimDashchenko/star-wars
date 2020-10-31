@@ -6,7 +6,7 @@ const initialState = {
     residents: []
 }
 
-export default (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
     switch (action.type){
         case PLANETS_LOAD_PLANETS:
             return{
@@ -28,3 +28,5 @@ export default (state = initialState, action) => {
         default: return state
     }
 }
+
+export default reducer;

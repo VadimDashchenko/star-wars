@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './styles.scss';
 
 const DetailPlanet = (props) => {
@@ -28,6 +29,11 @@ const DetailPlanet = (props) => {
             </ul>
         </div>
     )
+}
+
+DetailPlanet.propTypes = {
+    planet: PropTypes.object,
+    residents: PropTypes.array,
 }
 
 export default DetailPlanet;

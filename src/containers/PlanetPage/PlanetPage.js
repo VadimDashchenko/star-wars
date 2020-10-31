@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import DetailPlanet from "../../components/DetailPlanet/DetailPlanet";
 import Spinner from '../../components/Spinner/Spinner';
@@ -12,6 +13,11 @@ class PlanetPage extends Component {
         super(props);
 
         this.state = {}
+    }
+
+    static propTypes = {
+        planet: PropTypes.object,
+        residents: PropTypes.array
     }
 
     render() {
