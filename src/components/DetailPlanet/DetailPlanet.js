@@ -13,22 +13,19 @@ const DetailPlanet = (props) => {
                 <li><strong>Gravity: </strong> {planet.gravity}</li>
                 <li><strong>Type of territory: </strong> {planet.terrain}</li>
                 <li><strong>Population: </strong> {planet.population === 'unknown' ? 0 : planet.population}</li>
-                <li><strong>Residents: </strong> <select name="" id="">
-                    {residents.length === 0 ? <span>no residents</span> : residents.map((item, i) => (
-                        <option key={i}>{item.name}</option>
-                    ))}
-                </select>
+                <li><strong>Residents: </strong>
+                    {residents.length === 0
+                        ?
+                        <span>no residents</span>
+                        :
+                        <select name="" id="">
+                            {residents.map((item, i) => (
+                                <option key={i}>{item.name}</option>
+                            ))}
+                        </select>
+                    }
                 </li>
-
             </ul>
-            {/*<div className="detail__residents">*/}
-                {/*<span><strong>Residents: </strong></span>*/}
-                {/*{residents.length === 0 ? <span>no residents</span> : residents.map((item, i) => (*/}
-                {/*    <ul key={i}>*/}
-                {/*        <li>{item.name}</li>*/}
-                {/*    </ul>*/}
-                {/*))}*/}
-            {/*</div>*/}
         </div>
     )
 }

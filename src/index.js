@@ -4,7 +4,6 @@ import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import reducers from './reducers/index';
 import App from './containers/App/App';
-// import DetailPlanet from './components/DetailPlanet/DetailPlanet';
 import PlanetPage from './containers/PlanetPage/PlanetPage';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';

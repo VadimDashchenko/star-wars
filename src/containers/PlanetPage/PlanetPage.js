@@ -3,19 +3,15 @@ import {connect} from 'react-redux';
 import DetailPlanet from "../../components/DetailPlanet/DetailPlanet";
 import Spinner from '../../components/Spinner/Spinner';
 import Buttons from '../../components/Button/Button';
-import {Redirect, Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import './styles.scss';
-
-const BASE_URL = 'https://swapi.dev/api/';
 
 class PlanetPage extends Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {
-            redirect:false
-        }
+        this.state = {}
     }
 
     render() {

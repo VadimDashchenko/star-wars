@@ -65,7 +65,6 @@ class App extends Component {
             .then(res => res.json())
             .then(data => {
                 residents.push(data);
-                // console.log('BIG DATA', data)
             })
         ))
         getViewablePlanet(item, residents);

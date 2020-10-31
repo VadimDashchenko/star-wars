@@ -8,6 +8,7 @@ const CardItem = (props) => {
     return(
         <>
             {planets.map((item, i) => (
+                item.name !== 'unknown' &&
                 <Link key={i} to={`/planet/${item.name}`} onClick={() => getPlanet(item)}>
                     <Card
                         className="card-item"
