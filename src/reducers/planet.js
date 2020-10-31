@@ -1,7 +1,9 @@
-import {PLANETS_LOAD_PLANETS} from '../actions/planetsType';
+import {PLANETS_LOAD_PLANETS, PLANETS_GET_VIEWABLE_PLANET, PLANETS_RESET_VIEWABLE_PLANET} from '../actions/planetsType';
 
 const initialState = {
-    planets: []
+    planets: [],
+    viewablePlanet: null,
+    residents: []
 }
 
 export default (state = initialState, action) => {
@@ -10,6 +12,18 @@ export default (state = initialState, action) => {
             return{
                 ...state,
                 planets: action.payload
+            }
+        case PLANETS_GET_VIEWABLE_PLANET:
+            return {
+                ...state,
+                viewablePlanet: action.planet,
+                residents: action.residents
+            }
+        case PLANETS_RESET_VIEWABLE_PLANET:
+            return {
+                ...state,
+                viewablePlanet: null,
+                residents: []
             }
         default: return state
     }

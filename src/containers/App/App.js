@@ -4,7 +4,7 @@ import * as planetActions from '../../actions/planets';
 import CardItem from '../../components/CardItem/CardItem';
 import Buttons from '../../components/Button/Button';
 import Spinner from '../../components/Spinner/Spinner';
-import './App.css';
+import './App.scss';
 
 const BASE_URL = 'https://swapi.dev/api/';
 
@@ -33,7 +33,15 @@ class App extends Component {
             .then(() => this.setState({loading: false}))
     }
 
-    clickPage = (e) => {
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const {resetViewablePlanet, viewablePlanet} = this.props;
+        let path = window.location.pathname;
+        if(path === '/' && viewablePlanet !== null){
+            resetViewablePlanet()
+        }
+    }
+
+    prevNextPage = (e) => {
         const {loadPlanets} = this.props;
         const {next, prev} = this.state;
         let text = e.currentTarget.innerText;
@@ -50,26 +58,43 @@ class App extends Component {
             })
     }
 
+    getViewablePlanet = async (item) => {
+        const {getViewablePlanet} = this.props;
+        let residents = [];
+        await Promise.allSettled(item.residents.map(url => fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                residents.push(data);
+                // console.log('BIG DATA', data)
+            })
+        ))
+        getViewablePlanet(item, residents);
+    }
+
     render() {
         const {planetsAll} = this.props;
-        const {prev, loading} = this.state;
+        const {prev, loading, next} = this.state;
         return (
-            <div className="App">
-                {!loading ? <CardItem planets={planetsAll}/> : <Spinner/>}
-                {prev === null ?
-                    <Buttons click={this.clickPage} title="Next"/>
-                    :
-                    <>
-                        <Buttons click={this.clickPage} title="Previous"/>
-                        <Buttons click={this.clickPage} title="Next"/>
-                    </>}
+            <div className="app">
+                {!loading ?
+                    <section className="app__container">
+                        <div className="app__items">
+                            <CardItem getPlanet={this.getViewablePlanet} planets={planetsAll}/>
+                        </div>
+                        <div className="app__buttons">
+                            {prev !== null && <Buttons click={this.prevNextPage} title="Previous"/>}
+                            {next !== null && <Buttons click={this.prevNextPage} title="Next"/>}
+                        </div>
+                    </section>
+                    : <Spinner/>}
             </div>
         )
     }
 }
 
 const mapStateToProps = state => ({
-    planetsAll: state.planet.planets
+    planetsAll: state.planet.planets,
+    viewablePlanet: state.planet.viewablePlanet
 })
 
 export default connect(

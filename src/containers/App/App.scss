@@ -1,0 +1,17 @@
+.app {
+    padding: 20px;
+  /*text-align: center;*/
+
+    &__items{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      justify-content: space-evenly;
+     }
+
+  &__buttons{
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+  }
+}

@@ -1,18 +1,21 @@
 import React from 'react';
 import {Card} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 const CardItem = (props) => {
-    const {planets} = props;
+    const {planets, getPlanet} = props;
     return(
         <>
             {planets.map((item, i) => (
-                <Card
-                    key={i}
-                    href='#card-example-link-card'
-                    header={item.name}
-                    meta={`${item.climate} climate`}
-                    description={`${item.population} people on this planet`}
-                />
+                <Link key={i} to={`/planet/${item.name}`} onClick={() => getPlanet(item)}>
+                    <Card
+                        link
+                        key={i}
+                        header={item.name}
+                        meta={`climate: ${item.climate}`}
+                        description={`population: ${item.population === 'unknown' ? 0 : item.population}`}
+                    />
+                </Link>
             ))}
         </>
         )

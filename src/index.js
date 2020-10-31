@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 import reducers from './reducers/index';
-import './index.css';
-import 'semantic-ui-css/semantic.min.css'
 import App from './containers/App/App';
+// import DetailPlanet from './components/DetailPlanet/DetailPlanet';
+import PlanetPage from './containers/PlanetPage/PlanetPage';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import reportWebVitals from './reportWebVitals';
+import './index.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const store = createStore(
     reducers,
@@ -15,7 +18,16 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-        <App/>
+        <Router>
+            <Switch>
+                <Route exact path="/">
+                    <App />
+                </Route>
+                <Route path="/planet/:name">
+                    <PlanetPage />
+                </Route>
+            </Switch>
+        </Router>
     </Provider>,
     document.getElementById('root')
 );
