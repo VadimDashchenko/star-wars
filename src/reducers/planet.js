@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
         case PLANETS_LOAD_PLANETS:
             return{
                 ...state,
-                planets: state.planets.concat(action.payload)
+                planets: action.payload
             }
         default: return state
     }
