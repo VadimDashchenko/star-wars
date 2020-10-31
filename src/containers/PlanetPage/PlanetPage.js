@@ -4,6 +4,7 @@ import DetailPlanet from "../../components/DetailPlanet/DetailPlanet";
 import Spinner from '../../components/Spinner/Spinner';
 import Buttons from '../../components/Button/Button';
 import {Redirect, Link} from 'react-router-dom';
+import './styles.scss';
 
 const BASE_URL = 'https://swapi.dev/api/';
 

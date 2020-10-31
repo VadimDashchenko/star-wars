@@ -1,6 +1,7 @@
 import React from 'react';
 import {Card} from 'semantic-ui-react';
 import {Link} from 'react-router-dom';
+import './styles.scss';
 
 const CardItem = (props) => {
     const {planets, getPlanet} = props;
@@ -9,6 +10,7 @@ const CardItem = (props) => {
             {planets.map((item, i) => (
                 <Link key={i} to={`/planet/${item.name}`} onClick={() => getPlanet(item)}>
                     <Card
+                        className="card-item"
                         link
                         key={i}
                         header={item.name}
